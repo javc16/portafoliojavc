@@ -19,8 +19,7 @@ import config from '../react-bricks/config'
 
 interface PageProps {
   page: types.Page
-  header: types.Page
-  footer: types.Page
+
   errorNoKeys: boolean
   errorPage: boolean
   errorHeader: boolean
@@ -29,8 +28,6 @@ interface PageProps {
 
 const Page: React.FC<PageProps> = ({
   page,
-  header,
-  footer,
   errorNoKeys,
   errorPage,
   errorHeader,
@@ -40,8 +37,7 @@ const Page: React.FC<PageProps> = ({
   // Removes unknown or not allowed bricks
   const { pageTypes, bricks } = useReactBricksContext()
   const pageOk = page ? cleanPage(page, pageTypes, bricks) : null
-  const headerOk = header ? cleanPage(header, pageTypes, bricks) : null
-  const footerOk = footer ? cleanPage(footer, pageTypes, bricks) : null
+
 
   return (
     <Layout>
@@ -51,17 +47,9 @@ const Page: React.FC<PageProps> = ({
             {renderMeta(pageOk)}
             {renderJsonLd(pageOk)}
           </Head>
-          {headerOk && !errorHeader ? (
-            <PageViewer page={headerOk} showClickToEdit={false} />
-          ) : (
-            <ErrorNoHeader />
-          )}
+       
           <PageViewer page={pageOk} />
-          {footerOk && !errorFooter ? (
-            <PageViewer page={footerOk} showClickToEdit={false} />
-          ) : (
-            <ErrorNoFooter />
-          )}
+      
         </>
       )}
       {errorNoKeys && <ErrorNoKeys />}

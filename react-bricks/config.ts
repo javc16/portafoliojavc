@@ -23,7 +23,7 @@ const config: types.ReactBricksConfig = {
   appSettingsPath: '/admin/app-settings',
   previewPath: '/preview',
   // getAdminMenu: () => [],
-  isDarkColorMode: false,
+  isDarkColorMode: true,
   toggleColorMode: () => {},
   useCssInJs: false,
   appRootElement: '#__next',
